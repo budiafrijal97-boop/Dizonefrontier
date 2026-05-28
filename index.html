@@ -1,0 +1,31 @@
+<script type="module">
+import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js";
+
+import {
+getAuth,
+GoogleAuthProvider,
+signInWithPopup
+} from "https://www.gstatic.com/firebasejs/10.12.2/firebase-auth.js";
+
+const firebaseConfig = {
+apiKey: "AIzaSyCpeq8XHBXi7wHTuG8sWcFnynnKCJFhNFs",
+authDomain: "dizonefrontier-e074d.firebaseapp.com",
+projectId: "dizonefrontier-e074d",
+storageBucket: "dizonefrontier-e074d.firebasestorage.app",
+messagingSenderId: "669972941628",
+appId: "1:669972941628:web:bbce6052c8d0ee2641ec39"
+};
+
+const app = initializeApp(firebaseConfig);
+const auth = getAuth(app);
+const provider = new GoogleAuthProvider();
+
+window.loginGoogle = async function () {
+try {
+const result = await signInWithPopup(auth, provider);
+alert("Welcome " + result.user.displayName);
+} catch (error) {
+alert(error.message);
+}
+}
+</script>
